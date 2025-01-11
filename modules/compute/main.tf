@@ -8,7 +8,7 @@ resource "azurerm_linux_virtual_machine" "frontend_vm" {
   disable_password_authentication = true  #  password authentication is disabled
   admin_ssh_key {
     username   = var.admin_username
-    public_key = var.ssh_public_key # Path to SSH public key
+    public_key = file("/home/Hamada/.ssh/new_azure_key.pub") # Path to SSH public key
    } 
   network_interface_ids = [azurerm_network_interface.frontend_nic.id]
   os_disk {

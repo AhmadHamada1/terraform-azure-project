@@ -83,8 +83,3 @@ variable "frontend_ip_public_ip_id" {
   type        = string
   default     = "/subscriptions/2cb185c7-69e4-4ce4-855a-4df9eb63d13b/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIp"
 }
-
-variable "ssh_public_key" {
-  description = "SSH Public Key"
-  type        = string
-}
