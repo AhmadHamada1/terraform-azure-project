@@ -45,7 +45,7 @@ module "compute" {
   vm_size             = "Standard_B1s"
   admin_username      = var.admin_username
   admin_password      = var.admin_password
-  public_key           =  var.ssh_public_key
+  ssh_public_key           =  var.ssh_public_key
 }
 
 # Database Module
