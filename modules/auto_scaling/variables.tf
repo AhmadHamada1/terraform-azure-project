@@ -80,3 +80,8 @@ variable "frontend_subnet_id" {
   description = "Admin password for the VMs."
   type        = string
 }
+
+variable "ssh_public_key" {
+  description = "SSH Public Key"
+  type        = string
+}
