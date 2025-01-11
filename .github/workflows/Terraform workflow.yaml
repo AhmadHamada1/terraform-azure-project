@@ -22,11 +22,12 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: 1.4.0 # Replace with the version you are using
+          terraform_version: 1.10.4 # Replace with the version you are using
 
       - name: Configure SSH Key (Optional)
-        # if: env.SSH_PUBLIC_KEY != ''
-        run: echo "${{ secrets.SSH_PUBLIC_KEY }}" > ~/.ssh/new_azure_key.pub
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PUBLIC_KEY }}" > ~/.ssh/new_azure_key.pub
 
       - name: Terraform Init
         id: init
