@@ -21,6 +21,10 @@ resource "azurerm_resource_group" "main" {
   location = var.location
 }
 
+module "key_vault_secrets" {
+  source = "./modules/key_vault"
+}
+
 # Network Module
 module "network" {
   source              = "./modules/network"
