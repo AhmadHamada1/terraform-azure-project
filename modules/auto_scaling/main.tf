@@ -6,6 +6,7 @@ module "load_balancer" {
   frontend_ip_public_ip_name = var.frontend_ip_public_ip_name
   frontend_ip_public_ip_id   = var.frontend_ip_public_ip_id
   frontend_subnet_address    = var.frontend_subnet_address
+  ssh_public_key           =  var.ssh_public_key
 }
 
 resource "azurerm_linux_virtual_machine_scale_set" "frontend_vmss" {
