@@ -1,3 +1,4 @@
+
 # Terraform Azure Project
 
 This project automates the deployment of a **multi-tier infrastructure** on Microsoft Azure using Terraform. It provisions resources such as virtual networks, virtual machines, load balancers, auto-scaling, and a SQL database.
@@ -56,3 +57,106 @@ Before using this project, ensure you have the following:
    ```bash
    git clone https://github.com/AhmadHamada1/terraform-azure-project.git
    cd terraform-azure-project
+   ```
+
+2. **Initialize Terraform**:
+   ```bash
+   terraform init
+   ```
+
+3. **Review the Plan**:
+   ```bash
+   terraform plan
+   ```
+
+4. **Deploy the Infrastructure**:
+   ```bash
+   terraform apply
+   ```
+
+---
+
+## Modules
+
+The project is organized into the following modules:
+
+### Network
+- Creates a virtual network (VNet) with frontend and backend subnets.
+
+### Compute
+- Deploys frontend VMs or VMSS with auto-scaling.
+
+### Load Balancer
+- Configures an Azure Load Balancer for frontend VMs.
+
+### Database
+- Deploys an Azure SQL Server and database.
+
+### Auto-Scaling
+- Configures auto-scaling for the frontend VMSS.
+
+---
+
+## Variables
+
+The following variables are defined in `variables.tf`:
+
+- `location`: The Azure region to deploy resources.
+- `resource_group_name`: The name of the resource group.
+- `admin_username`: Admin username for VMs.
+- `admin_password`: Admin password for VMs.
+- `sql_admin_username`: Admin username for SQL Server.
+- `sql_admin_password`: Admin password for SQL Server.
+- `virtual_network_name`: Name of the virtual network.
+- `frontend_subnet_address`: Address range for the frontend subnet.
+- `backend_subnet_address`: Address range for the backend subnet.
+- `vm_size`: Size of the virtual machines.
+- `autoscale_max_instances`: Maximum instances for auto-scaling.
+- `autoscale_min_instances`: Minimum instances for auto-scaling.
+- `autoscale_cpu_threshold`: CPU threshold for auto-scaling.
+
+---
+
+## Outputs
+
+The following outputs are defined in `outputs.tf`:
+
+- `vmss_name`: Name of the Virtual Machine Scale Set.
+- `frontend_backend_pool_id`: ID of the load balancer backend pool.
+- `frontend_subnet_id`: ID of the frontend subnet.
+
+---
+
+## Usage
+
+### Customize Variables
+Modify `variables.tf` or provide values during `terraform apply`.
+
+### Deploy Specific Modules
+Use the `-target` flag to deploy specific modules:
+```bash
+terraform apply -target module.network
+```
+
+### View Outputs
+After deployment, view outputs using:
+```bash
+terraform output
+```
+
+---
+
+## Destroying Resources
+
+To destroy all resources created by this project:
+```bash
+terraform destroy
+```
+
+---
+
+## Contributing
+
+Feel free to submit issues or pull requests. Contributions are welcome!
+
+---
