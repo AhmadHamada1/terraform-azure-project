@@ -66,6 +66,7 @@ module "load_balancer" {
   frontend_ip_public_ip_name = var.frontend_ip_public_ip_name
   frontend_ip_public_ip_id   = var.frontend_ip_public_ip_id
   frontend_subnet_address    = var.frontend_subnet_address
+  ssh_public_key           =  var.ssh_public_key
 }
 
 # auto_scaling Module
@@ -85,5 +86,6 @@ module "auto_scaling" {
   admin_password      = var.admin_password
   frontend_subnet_address = "10.0.1.0/24"
   frontend_subnet_id = module.network.frontend_subnet_id
+  ssh_public_key           =  var.ssh_public_key
   
 }
