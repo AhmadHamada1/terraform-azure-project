@@ -22,12 +22,10 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: 1.10.4 # Replace with the version you are using
+          terraform_version: 1.4.0 # Replace with the version you are using
 
-      - name: Configure SSH Key (Optional)
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PUBLIC_KEY }}" > ~/.ssh/new_azure_key.pub
+      - name: Configure SSH Key (Inject it into Terraform)
+        run: echo "ssh_public_key=${{ secrets.SSH_PUBLIC_KEY }}" >> $GITHUB_ENV
 
       - name: Terraform Init
         id: init
@@ -35,11 +33,11 @@ jobs:
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan -out=tfplan
+        run: terraform plan -out=tfplan -var="ssh_public_key=${{ secrets.SSH_PUBLIC_KEY }}"
 
       - name: Terraform Apply
         id: apply
-        run: terraform apply -auto-approve tfplan
+        run: terraform apply -auto-approve tfplan -var="ssh_public_key=${{ secrets.SSH_PUBLIC_KEY }}"
 
       - name: Set Terraform Output
         run: echo "terraform_output=$(terraform output -json)" >> $GITHUB_ENV
