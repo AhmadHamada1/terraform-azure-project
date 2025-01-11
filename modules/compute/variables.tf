@@ -28,3 +28,8 @@ variable "frontend_subnet_id" {
   description = "The ID of the frontend subnet"
   type        = string
 }
+
+variable "ssh_public_key" {
+  description = "SSH Public Key"
+  type        = string
+}
