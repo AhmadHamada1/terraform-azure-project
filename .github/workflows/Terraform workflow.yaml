@@ -27,7 +27,7 @@ jobs:
       - name: Configure SSH Key (Optional)
         if: env.SSH_PUBLIC_KEY != ''
         run: echo "${{ secrets.SSH_PUBLIC_KEY }}" > ~/.ssh/new_azure_key.pub
-        
+
       - name: Terraform Init
         id: init
         run: terraform init
@@ -46,3 +46,6 @@ jobs:
       - name: Post-Apply Actions
         run: |
           echo "Terraform deployment complete."
+          echo "Outputs: ${{ env.terraform_output }}"
+        env:
+          terraform_output: ${{ env.terraform_output }}
