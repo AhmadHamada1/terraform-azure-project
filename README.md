@@ -154,6 +154,9 @@ terraform destroy
 ```
 
 ---
+## CI/CD Pipeline
+
+The pipeline is set up with GitHub Actions to run Terraform `init`, `plan`, and `apply` automatically on every push to the `main` branch.
 
 ## Contributing
 
