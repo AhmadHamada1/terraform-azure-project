@@ -1,0 +1,16 @@
+location = "East US"
+admin_username = "adminuser"
+admin_password = "Password123!"
+sql_admin_username = "sqladmin"
+sql_admin_password = "Password123!"
+autoscale_cpu_threshold = 75
+autoscale_max_instances = 2
+autoscale_min_instances = 1
+frontend_ip_name = "frontend-ip"
+frontend_ip_public_ip_id   = "/subscriptions/2cb185c7-69e4-4ce4-855a-4df9eb63d13b/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIp"
+frontend_ip_public_ip_name = "frontend-ip"
+frontend_subnet_address = "10.0.1.0/24"
+frontend_vmss_name = "scale1"
+resource_group_name = "myResourceGroup"
+virtual_network_name = "TerraVN"
+vmss_instance_count = 2
