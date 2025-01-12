@@ -1,4 +1,4 @@
-name: Terraform Deployment
+name: CI-CD Terraform Deployment
 
 on:
   push:
@@ -31,20 +31,20 @@ jobs:
         id: init
         run: terraform init
 
-      - name: Terraform Plan
-        id: plan
-        run: terraform plan -out=tfplan -var="ssh_public_key=${{ secrets.SSH_PUBLIC_KEY }}"
+      # - name: Terraform Plan
+      #   id: plan
+      #   run: terraform plan -out=tfplan -var="ssh_public_key=${{ secrets.SSH_PUBLIC_KEY }}"
 
-      - name: Terraform Apply
-        id: apply
-        run: terraform apply -auto-approve tfplan -var="ssh_public_key=${{ secrets.SSH_PUBLIC_KEY }}"
+      # - name: Terraform Apply
+      #   id: apply
+      #   run: terraform apply -auto-approve tfplan -var="ssh_public_key=${{ secrets.SSH_PUBLIC_KEY }}"
 
-      - name: Set Terraform Output
-        run: echo "terraform_output=$(terraform output -json)" >> $GITHUB_ENV
+      # - name: Set Terraform Output
+      #   run: echo "terraform_output=$(terraform output -json)" >> $GITHUB_ENV
 
-      - name: Post-Apply Actions
-        run: |
-          echo "Terraform deployment complete."
-          echo "Outputs: ${{ env.terraform_output }}"
-        env:
-          terraform_output: ${{ env.terraform_output }}
+      # - name: Post-Apply Actions
+      #   run: |
+      #     echo "Terraform deployment complete."
+      #     echo "Outputs: ${{ env.terraform_output }}"
+      #   env:
+      #     terraform_output: ${{ env.terraform_output }}
