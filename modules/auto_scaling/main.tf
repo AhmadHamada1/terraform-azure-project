@@ -23,7 +23,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "frontend_vmss" {
    } 
 
   # Upgrade policy
-  upgrade_mode = "Automatic"
+  #upgrade_mode = "Automatic"
 
   # Source image for the VMs (Ubuntu 19.04 in this example)
   source_image_reference {
